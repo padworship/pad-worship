@@ -24,6 +24,8 @@
     const all_buttons = document.querySelectorAll('button') 
 
     all_buttons.forEach(button => {
+      console.log(button.style.backgroundColor)
+      
       button.addEventListener('click', play_or_stop)
       console.log(button)
     });   
@@ -31,6 +33,7 @@
     style = "worship"
     last_played_note = this.note
     sound.loop = true
+    
 
     function play_or_stop() {
       note = this.id
@@ -41,10 +44,13 @@
         last_played_note = note
         sound.src = mp3_path
         sound.play()
+        this.style.backgroundColor = "green"
+        
         //console.log('sound played')        
       } else {
         sound.pause()
         sound.currentTime = 0;
+        this.style.backgroundColor = ""
         console.log('sound paused')
       }
 
@@ -77,3 +83,6 @@
   </script>
  
 </body>
+
+
+<!--http://forum.wmonline.com.br/topic/240973-como-mudar-a-cor-de-um-botao-html-usando-javascript/-->
