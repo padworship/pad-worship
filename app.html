@@ -1,0 +1,79 @@
+<body>
+ 
+  <button id='C'>C</button>
+  <button id='C+'>C#</button>
+  <button id='D'>D</button>
+  <button id='D+'>D#</button>
+  <button id='E'>E</button>
+  <button id='F'>F</button>
+  <button id='G'>G</button>
+  <button id='G+'>G#</button>
+  <button id='A'>A</button>
+  <button id='A+'>A#</button>
+  <button id='B'>B</button>
+  <button id='teste2'>TESTE</button>
+  
+  
+
+  <script>
+ 
+    const sound = new Audio()
+    //const button = document.getElementById('C')
+    //button.addEventListener('click', play_or_stop)
+
+    const all_buttons = document.querySelectorAll('button') 
+
+    all_buttons.forEach(button => {
+      button.addEventListener('click', play_or_stop)
+      console.log(button)
+    });   
+
+    style = "worship"
+    last_played_note = this.note
+    sound.loop = true
+
+    function play_or_stop() {
+      note = this.id
+      mp3_path = `resources/pad_audios/${style}/${style}_${note}.mp3`
+    
+      if (last_played_note != note || sound.paused) {
+        console.log(`diff: previous: ${last_played_note} new: ${note}`)
+        last_played_note = note
+        sound.src = mp3_path
+        sound.play()
+        //console.log('sound played')        
+      } else {
+        sound.pause()
+        sound.currentTime = 0;
+        console.log('sound paused')
+      }
+
+      console.log(`sound status ${sound.paused}`)
+      /**
+      if (last_played_note != note) {
+        console.log(`diff: previous: ${last_played_note} new: ${note}`)
+        last_played_note = note
+        sound.src = mp3_path
+        sound.play()        
+      }else if (sound.paused) {
+        sound.src = mp3_path
+        sound.play()
+        console.log('sound played')
+      }else {
+        sound.pause()
+        sound.currentTime = 0;
+        console.log('sound paused')
+      }
+      
+      
+      //console.log(mp3_path)
+       ***/
+    }
+
+    function get(){
+      console.log(sound.paused)
+    }
+   
+  </script>
+ 
+</body>
